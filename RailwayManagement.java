@@ -24,5 +24,7 @@ public class RailwayManagement {
         obj2.Pass();
         }
     }
+    obj.close();
     }
+
 }

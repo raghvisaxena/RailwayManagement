@@ -3,7 +3,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.*;
-
 import railway.management.*;
 import java.io.Serializable;
 import java.util.Scanner;
@@ -86,12 +85,6 @@ public class SeatReservation {
         }
     }
 
-
-    
-
-    /*we will be adding an package of trains and their numbers later
-    this is the default price*/
-
     public int nonwindowseats(int choice){
         if (choice==1){
         if(general[103]!=1)
@@ -102,7 +95,7 @@ public class SeatReservation {
                 countg--;
                 return i;}
             }
-            //store in passenger details.
+            
         }
     }
 
@@ -144,7 +137,7 @@ public class SeatReservation {
     }
     public int windowseats(int choice){
         if(choice==1)
-        {//System.out.println("No of nonwindow seats available in General = 52");
+        {
             for(int i=1;i<=104;i++)
             {if(i%2==0 && general[i]!=1){
                 general[i]=1;
@@ -152,7 +145,7 @@ public class SeatReservation {
                 return i;}}}
 
         else if(choice==2)
-        {//System.out.println("No of nonwindow seats available in AC3 = 52");
+        {
             for(int i=1;i<=104;i++)
             {if(i%2==0  && Ac3[i]!=1){
                 Ac3[i]=1;
@@ -160,7 +153,7 @@ public class SeatReservation {
                 return i;}}}
 
         else if(choice==3)
-        {//System.out.println("No of nonwindow seats available in AC2 = 27");
+        {
             for(int i=1;i<=54;i++)
             {if(i%2==0  && Ac2[i]!=1){
                 Ac2[i]=1;
@@ -168,7 +161,7 @@ public class SeatReservation {
                 return i;}}}
 
         else if(choice==4)
-        {//System.out.println("No of nonwindow seats available in AC1 = 14");
+        { 
             for(int i=1;i<=54;i++)
             {if(i%2==0  && Ac1[i]!=1){
                 Ac1[i]=1;
@@ -224,106 +217,4 @@ public class SeatReservation {
 
     }
 
-
-   /* public void Seat(){
-
-        System.out.println();
-
-        // Lets start by setting all seats equal to 0
-
-        for (int i = 0; i < 10; i++) {
-
-            seat[i] = 0;
-
-        }
-
-        int choice = 1;
-
-        // Ask user for a window or a non window seat and store their coice.
-
-        System.out.print("Please enter 1 for window, 2 for non window, or 0 to exit: ");
-
-        choice = s.nextInt();
-        // While their choice is not the one for exit, execute our booking.
-
-        while (choice != 0) {
-
-            int seatnumber = 0;
-            // If they chose a window seat, attempt to book it.
-            if (choice == 1) {
-                seatnumber = Windowseats();
-                // No window seats available, try booking a non window seat for them instead.
-                if (seatnumber == -1) {
-                    seatnumber = nonwindowseats();
-                    if (seatnumber != -1) {
-                        System.out.println("Window seats are reserved, non window seats are vacant");
-                        Pass(seatnumber);
-                    }
-                }
-                else {
-                    // Booking a window seat was successful.
-                    System.out.println("you have reserved the window seat");
-                    Pass(seatnumber);
-                }
-
-            }
-
-            else if (choice == 2) {
-
-                // If they chose booking a nonwindow, check to see if it is available.
-
-                seatnumber = nonwindowseats();
-                // If not available, see if we have window seats available.
-                if (seatnumber == -1) {
-                    seatnumber = Windowseats();
-
-                    if (seatnumber != -1) {
-
-                        System.out.println("All non windows seats are reserved. You can book Window seats");
-
-                        Pass(seatnumber);
-
-                    }
-
-                }
-
-                else {
-
-                    // Booking a non window seat was successful.
-
-                    System.out.println("your non window seat has been reserved");
-
-                    Pass(seatnumber);
-
-                }
-
-            }
-
-            else {
-
-                // Print an error message if they did not choose 1, 2, or 0 for their choice.
-
-                System.out.println("Please enter 1 or 2, Try again!!!");
-
-                choice = 0;
-
-            }
-
-            // No window or non window seats are available.
-            if (seatnumber == -1) {
-
-                System.out.println("Booking procedure closed");
-                System.out.println("You have to wait in the waiting area, press 0 and then 4.");
-                System.out.println();
-
-            }
-
-            // Selection for a choice
-
-            System.out.print("Please enter 1 for window, 2 for non window, or 0 to exit: ");
-            System.out.println();
-            choice = s.nextInt();
-        }
-        }
-    */
 }
