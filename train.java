@@ -40,7 +40,7 @@ class data implements Serializable {
 
 	@Override
 	public String toString() {
-		return ("train:"+ trainNum + " number of stations" + numStation +"  stations:" + station[2]);
+		return ("train: "+ trainNum + "   number of stations:" + numStation +"   " + station[0] +" - "+ station[numStation-1]);
 	}
 }
 

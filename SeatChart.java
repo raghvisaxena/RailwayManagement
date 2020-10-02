@@ -69,6 +69,14 @@ class seat{
     SeatChart p5= new SeatChart("monday",5);
     SeatChart p6= new SeatChart("monday",6);
     SeatChart p7= new SeatChart("monday",7);
+    SeatChart q7= new SeatChart("tuesday",7);
+    SeatChart q1= new SeatChart("tuesday",1);
+    SeatChart q2= new SeatChart("tuesday",2);
+    SeatChart q3= new SeatChart("tuesday",3);
+    SeatChart q4= new SeatChart("tuesday",4);
+    SeatChart q5= new SeatChart("tuesday",5);
+    SeatChart q6= new SeatChart("tuesday",6);
+    SeatChart w1= new SeatChart("wednesday",1);SeatChart w2= new SeatChart("wednesday",2);SeatChart w3= new SeatChart("wednesday",3);SeatChart w4= new SeatChart("wednesday",4);SeatChart w5= new SeatChart("wednesday",5);SeatChart w6= new SeatChart("wednesday",6);SeatChart w7= new SeatChart("wednesday",7);
 
     try {
 		
@@ -79,6 +87,13 @@ class seat{
         o.writeObject(p1);
         o.writeObject(p2);
         o.writeObject(p3);
+        o.writeObject(p4);
+        o.writeObject(p5);
+        o.writeObject(p6);
+        o.writeObject(p7);
+        o.writeObject(q1);
+        o.writeObject(q2);
+
 
         o.close();
         f.close();
@@ -90,9 +105,20 @@ class seat{
         SeatChart pr1 = (SeatChart) oi.readObject();
         SeatChart pr2 = (SeatChart) oi.readObject();
         SeatChart pr3 = (SeatChart) oi.readObject();
+        SeatChart pr4 = (SeatChart) oi.readObject();
+        SeatChart pr5 = (SeatChart) oi.readObject();
+        SeatChart pr6 = (SeatChart) oi.readObject();
+        SeatChart pr7 = (SeatChart) oi.readObject();
+        SeatChart pr8 = (SeatChart) oi.readObject();
+        SeatChart pr9 = (SeatChart) oi.readObject();
+
+
         pr1.show();
         pr2.show();
         pr3.show();
+
+
+
         oi.close();
         fi.close();
 
