@@ -216,5 +216,4 @@ public class SeatReservation {
         System.out.println();
 
     }
-
 }
