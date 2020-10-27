@@ -20,7 +20,6 @@ class data implements Serializable {
 	data() {
 	}
 
-
 	data(int num, int n, String[] station) {
         this.trainNum = num;
 		this.numStation=n;
@@ -43,8 +42,6 @@ class data implements Serializable {
 		return ("train: "+ trainNum + "   number of stations:" + numStation +"   " + station[0] +" - "+ station[numStation-1]);
 	}
 }
-
-
 
 public class train {
 
@@ -143,7 +140,7 @@ public class train {
 			o.writeObject(p19);
 			o.writeObject(p20);
 			o.writeObject(p21);
-
+			o.writeObject(p22);
 			o.close();
 			f.close();
 
@@ -172,6 +169,7 @@ public class train {
 			data pr19= (data) oi.readObject();
 			data pr20= (data) oi.readObject();
 			data pr21= (data) oi.readObject();
+			data pr22= (data) oi.readObject();
 			System.out.println(pr1.toString());
 			System.out.println(pr2.toString());
 			System.out.println(pr3.toString());
@@ -193,7 +191,7 @@ public class train {
 			System.out.println(pr19.toString());
 			System.out.println(pr20.toString());
 			System.out.println(pr21.toString());
-
+			System.out.println(pr22.toString());
 
 			oi.close();
 			fi.close();
@@ -203,7 +201,6 @@ public class train {
 		} catch (IOException e) {
 			System.out.println("Error initializing stream");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
