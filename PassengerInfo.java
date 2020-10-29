@@ -56,8 +56,8 @@ class info implements Serializable{
         this.pnr= r.nextInt(5000) ;
         return pnr;
     }
-    @Override
-	public String toString() {
+ 
+	public String print() {
 		return ("name: "+ name+ "   age:" + age +"   gender:"+ gender +"    PNR:"+pnr );
 	}
 }
@@ -79,28 +79,26 @@ public class PassengerInfo{
         int a= p1.setAge();
         char g= p1.setGender();
         int p= p1.getPnr();
-        String[] s={n, Integer.toString(a), String.valueOf(g), Integer.toString(g)};
+        String[] s={n, Integer.toString(a), String.valueOf(g), Integer.toString(p)};
         return s;
     }
     public static void main(String[] args) {
-        PassengerInfo p1= new PassengerInfo();
-        String[] pass=p1.getinfo();
+        PassengerInfo i= new PassengerInfo();
+        String[] pass=i.getinfo();
         info s1 = new info(pass[0], Integer.parseInt(pass[1]), pass[2].charAt(0), Integer.parseInt(pass[3]));
-
         try {
 			FileOutputStream f = new FileOutputStream(new File("myPassenger.ser"));
 			ObjectOutputStream o = new ObjectOutputStream(f);
 
             o.writeObject(s1);
-
+            System.out.println("Successfully written");
             o.close();
 			f.close();
             
-            FileInputStream fi = new FileInputStream(new File("myTrains.ser"));
+            FileInputStream fi = new FileInputStream(new File("myPassenger.ser"));
 			ObjectInputStream oi = new ObjectInputStream(fi);
 
-			// Read objects
-            data pr1 = (data) oi.readObject();
+            info pr1 = (info) oi.readObject();
             System.out.println(pr1.toString());
 			oi.close();
 			fi.close();
