@@ -20,6 +20,10 @@ public class SeatReservation {
     private static int[] Ac3 = new int[104];
     private static int[] Ac2 = new int[54];
     private static int[] Ac1 = new int[28];
+    int countg = 104;
+    int countAC1=28;
+    int countAC2=54;
+    int countAC3=104;
     int numofpassengers;
     int trainNumber;
     int choice;
@@ -41,9 +45,9 @@ public class SeatReservation {
     public void trainSearch(){
         try {
  
-            FileInputStream fileIn = new FileInputStream("C:\\Users\\hp\\Desktop\\RailwayManagementSystem\\src\\railway\\management\\myTrains.ser");
+            FileInputStream fileIn = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\myTrains.ser");
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-            for(int i=0;i<2;i++){
+            for(int i=0;i<21;i++){
             Object obj = objectIn.readObject();
             data pr1=(data) obj;
             String[] s=pr1.getStations();
@@ -69,13 +73,13 @@ public class SeatReservation {
     public void readChart(){
         try {
  
-            FileInputStream fi = new FileInputStream("C:\\Users\\hp\\Desktop\\RailwayManagementSystem\\src\\railway\\management\\seatAllocation.ser");
+            FileInputStream fi = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
             ObjectInputStream oi = new ObjectInputStream(fi);
-            for(int i=0;i<2;i++){
+            for(int i=0;i<14;i++){
             Object obj1 = oi.readObject();
             SeatChart pr1=(SeatChart) obj1;
             if(pr1.getDay().equals(d) && pr1.getTrainNumber()==trainNumber){
-                pr1.show();
+                pr1.show(); choice=pr1.getChoice();
             }
             }
         oi.close();
@@ -84,6 +88,7 @@ public class SeatReservation {
             ex.printStackTrace();
         }
     }
+   
 
     public int nonwindowseats(int choice){
         if (choice==1){
@@ -171,7 +176,6 @@ public class SeatReservation {
         return -1;
 
     }
-    
 
     public void passenger(){
         System.out.println("Enter number of passengers");

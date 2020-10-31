@@ -28,10 +28,10 @@ public class SeatChart implements Serializable{
 
     public void show(){
         Scanner scan = new Scanner(System.in);
-        System.out.println("1. General" + count(gen));
-        System.out.println("2. Third AC" + count(AC3));
-        System.out.println("3. Second AC" + count(AC2));
-        System.out.println("4. First AC" + count(AC1));
+        System.out.println("1. General ---- " + count(gen));
+        System.out.println("2. Third AC ---- " + count(AC3));
+        System.out.println("3. Second AC ---- " + count(AC2));
+        System.out.println("4. First AC ---- " + count(AC1));
         System.out.println("Enter the your Choice");
         choice=scan.nextInt();
     }
@@ -93,6 +93,12 @@ class seat{
         o.writeObject(p7);
         o.writeObject(q1);
         o.writeObject(q2);
+        o.writeObject(q3);
+        o.writeObject(q4);
+        o.writeObject(q5);
+        o.writeObject(q6);
+        o.writeObject(q7);
+        o.writeObject(w1);
 
 
         o.close();
