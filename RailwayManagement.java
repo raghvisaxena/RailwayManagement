@@ -9,7 +9,7 @@ public class RailwayManagement {
     
     while(choice !=5){
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
-        System.out.println("Press: \n 1- Train Search\n 2- Seat Reservation \n 3- Booking Status \n 4-Waiting Lounge \n 5- Exit");
+        System.out.println("Press: \n 1- Train Search\n 2- Seat Reservation \n 3- Booking Status \n 4-Ticket Cancellation \n 5- Exit");
         System.out.println("---------------------------------------------------------------------------------------------------------------------\n\n");
         choice =obj.nextInt();
         if(choice==1){
