@@ -49,14 +49,13 @@ public class train {
 		String[] station1={"surat","vadodara","anand","nadiad","raipur","ujjain","dewas","indore"};
 		data p1 = new data(1,8,station1);
 
-
-		String[] station2={"Delhi","noida","mathura","ayodhya","kanpur","lucknow","agra","gwalior","bhopal","ujjain","indore"};
+		String[] station2={"delhi","noida","mathura","ayodhya","kanpur","lucknow","agra","gwalior","bhopal","ujjain","indore"};
 		data p2 = new data(2,11,station2);
 
 		String[] station3={"indore","dewas","ujjain","raipur","nadiad","anand","vadodara","surat"};
 		data p3 = new data(3,8, station3);
 
-		String[] station4={"indore","ujjain","bhopal","gwalior","agra","lucknow","kanpur","ayodhya","mathura","noida","Delhi"};
+		String[] station4={"indore","ujjain","bhopal","gwalior","agra","lucknow","kanpur","ayodhya","mathura","noida","delhi"};
 		data p4 = new data(4,11, station4);
 
 		String[] station5={"surat","vadodara","udaipur","ajmer","jaipur","agra","noida","delhi"};
