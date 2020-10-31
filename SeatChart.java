@@ -93,6 +93,12 @@ class seat{
         o.writeObject(p7);
         o.writeObject(q1);
         o.writeObject(q2);
+        o.writeObject(q3);
+        o.writeObject(q4);
+        o.writeObject(q5);
+        o.writeObject(q6);
+        o.writeObject(q7);
+        o.writeObject(w1);
 
 
         o.close();

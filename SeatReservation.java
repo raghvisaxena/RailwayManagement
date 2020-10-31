@@ -45,9 +45,9 @@ public class SeatReservation {
     public void trainSearch(){
         try {
  
-            FileInputStream fileIn = new FileInputStream("C:\\Users\\hp\\Desktop\\RailwayManagementSystem\\src\\railway\\management\\myTrains.ser");
+            FileInputStream fileIn = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\myTrains.ser");
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-            for(int i=0;i<2;i++){
+            for(int i=0;i<21;i++){
             Object obj = objectIn.readObject();
             data pr1=(data) obj;
             String[] s=pr1.getStations();
@@ -73,9 +73,9 @@ public class SeatReservation {
     public void readChart(){
         try {
  
-            FileInputStream fi = new FileInputStream("C:\\Users\\hp\\Desktop\\RailwayManagementSystem\\src\\railway\\management\\seatAllocation.ser");
+            FileInputStream fi = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
             ObjectInputStream oi = new ObjectInputStream(fi);
-            for(int i=0;i<2;i++){
+            for(int i=0;i<14;i++){
             Object obj1 = oi.readObject();
             SeatChart pr1=(SeatChart) obj1;
             if(pr1.getDay().equals(d) && pr1.getTrainNumber()==trainNumber){

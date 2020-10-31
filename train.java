@@ -54,7 +54,7 @@ public class train {
 		data p2 = new data(2,11,station2);
 
 		String[] station3={"indore","dewas","ujjain","raipur","nadiad","anand","vadodara","surat"};
-		data p3 = new data(1,8, station3);
+		data p3 = new data(3,8, station3);
 
 		String[] station4={"indore","ujjain","bhopal","gwalior","agra","lucknow","kanpur","ayodhya","mathura","noida","Delhi"};
 		data p4 = new data(4,11, station4);
@@ -63,7 +63,7 @@ public class train {
 		data p5 = new data(5,8, station5);
 
 		String[] station6={"delhi","noida","agra","Jaipur","Ajmer","Udaipur","vadodara","surat","vapi","mumbai"};
-		data p6 = new data(7, 10, station6);
+		data p6 = new data(6, 10, station6);
 
 		String[] station7={"patna","deoghar","durgapur","dhanbad","bardhaman","kolkata"};
 		data p7 = new data(7, 6, station7);
@@ -111,7 +111,7 @@ public class train {
 		data p21= new data(21, 6, station21);
 		
 		String[] station22={"new delhi","mathura","agra","gwalior","jhansi","bina","bhopal","itarsi","belapur","ahmadnagar", "solapur","anantapur","hindupur","bangalore"};
-		data p22= new data(21, 14, station22);
+		data p22= new data(22, 14, station22);
 
 		try {
 		
