@@ -16,7 +16,7 @@ import railway.management.*;
 
 class info implements Serializable{
     private static final long serialVersionUID = 1L;
-    String name, day;
+    String name, day, choice;
     int age, pnr, trainnum;
     char gender;
     int[] seatnum = new int[104];
@@ -25,7 +25,6 @@ class info implements Serializable{
 
     info(){
     }
-
     public int getPnr(){
         return this.pnr;
     }
@@ -38,12 +37,17 @@ class info implements Serializable{
     {
         return this.day;
     }
+
+    public String getchoice()
+    {
+        return this.choice;
+    }
     
     public int[] getSeatnum() {
         return seatnum;
     }
 
-    public void getinfo(int t,String d,int[] snum){
+    public void getinfo(int t,String d,int[] snum, String c){
         
         System.out.print("Enter name:   ");
         this.name=sc.nextLine();
@@ -55,6 +59,7 @@ class info implements Serializable{
         this.day=d;
         this.trainnum=t;
         this.seatnum=snum;
+        this.choice=c;
     }
 
     @Override
@@ -68,32 +73,26 @@ public class PassengerInfo {
     public static void main(String[] args) {
         info s1 = new info();
         int [] a = {1,2,3,6,5};
-        s1.getinfo(7, "monday", a);
-        info s2 = new info();
-        s2.getinfo(2, "hdwh", a);
+        String c = "general";
+        s1.getinfo(7, "monday", a, c);
         //File file = new File("myPassenger.ser");
         try {
-			FileOutputStream f = new FileOutputStream(new File("myPassenger.ser"),true);
+            String filename = (s1.name +".txt");
+			FileOutputStream f = new FileOutputStream(new File(filename),true);
 			ObjectOutputStream o = new ObjectOutputStream(f);
 
             o.writeObject(s1);
-            System.out.println("lalllallal");
-            o.writeObject(s2);
-            System.out.println("rrrrrlalllallal");
 
             o.close();
 			f.close();
             
-            FileInputStream fi = new FileInputStream(new File("myPassenger.ser"));
+            FileInputStream fi = new FileInputStream(new File(filename));
 			ObjectInputStream oi = new ObjectInputStream(fi);
 
 			// Read objects
             info ps1 = (info) oi.readObject();
             System.out.println(ps1.toString());
-            info ps2 = (info) oi.readObject();
-            System.out.println("ddddddddd");
-            System.out.println(ps2.toString());
-            
+    
 			oi.close();
 			fi.close();
 
