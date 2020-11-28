@@ -14,16 +14,16 @@ import java.io.ObjectOutputStream;
 import railway.management.*;
 //import railway.management.SeatReservation.passengerinfo;
 
-class info implements Serializable{
+class PassengerInfo implements Serializable{
     private static final long serialVersionUID = 1L;
-    String name, day, choice;
+    String name, day; int choice;
     int age, pnr, trainnum;
     char gender;
     int[] seatnum = new int[104];
     Random r= new Random();
     transient Scanner sc = new Scanner(System.in);
 
-    info(){
+    PassengerInfo(){
     }
     public int getPnr(){
         return this.pnr;
@@ -38,7 +38,7 @@ class info implements Serializable{
         return this.day;
     }
 
-    public String getchoice()
+    public int getchoice()
     {
         return this.choice;
     }
@@ -47,7 +47,7 @@ class info implements Serializable{
         return seatnum;
     }
 
-    public void getinfo(int t,String d,int[] snum, String c){
+    public void getinfo(int t,String d,int[] snum, int c){
         
         System.out.print("Enter name:   ");
         this.name=sc.nextLine();
@@ -60,28 +60,23 @@ class info implements Serializable{
         this.trainnum=t;
         this.seatnum=snum;
         this.choice=c;
+        writeinfo();
     }
 
     @Override
 	public String toString() {
         return ("\nname: "+ name +"   age:"+ age +"   gender:"+ gender +"    PNR:"+ pnr 
                 +"\ntrain number:"+ trainnum +"   day:"+ day +"\nSeat numbers:"+ Arrays.toString(seatnum) +"\n");
-	}
-}
-
-public class PassengerInfo {
-    public static void main(String[] args) {
-        info s1 = new info();
-        int [] a = {1,2,3,6,5};
-        String c = "general";
-        s1.getinfo(7, "monday", a, c);
+    }
+    
+    public void writeinfo(){
         //File file = new File("myPassenger.ser");
         try {
-            String filename = (s1.name +".txt");
+            String filename = (this.name +".txt");
 			FileOutputStream f = new FileOutputStream(new File(filename),true);
 			ObjectOutputStream o = new ObjectOutputStream(f);
 
-            o.writeObject(s1);
+            o.writeObject(this);
 
             o.close();
 			f.close();
@@ -90,7 +85,7 @@ public class PassengerInfo {
 			ObjectInputStream oi = new ObjectInputStream(fi);
 
 			// Read objects
-            info ps1 = (info) oi.readObject();
+            PassengerInfo ps1 = (PassengerInfo) oi.readObject();
             System.out.println(ps1.toString());
     
 			oi.close();
