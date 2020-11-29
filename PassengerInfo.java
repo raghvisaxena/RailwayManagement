@@ -20,7 +20,8 @@ class info implements Serializable{
     char gender;
     int pnr;
     Random r= new Random();
-    Scanner sc = new Scanner(System.in);
+
+    transient Scanner sc = new Scanner(System.in);
 
     info(){
 
@@ -56,8 +57,10 @@ class info implements Serializable{
         this.pnr= r.nextInt(5000) ;
         return pnr;
     }
+
     @Override
 	public String toString() {
+
 		return ("name: "+ name+ "   age:" + age +"   gender:"+ gender +"    PNR:"+pnr );
 	}
 }
@@ -72,19 +75,22 @@ class info implements Serializable{
         return s;
     }
 }*/
+
 public class PassengerInfo{
+
     public String[] getinfo(){
         info p1 = new info();
         String n= p1.setName();
         int a= p1.setAge();
         char g= p1.setGender();
         int p= p1.getPnr();
-        String[] s={n, Integer.toString(a), String.valueOf(g), Integer.toString(g)};
+        String[] s={n, Integer.toString(a), String.valueOf(g), Integer.toString(p)};
         return s;
     }
+
     public static void main(String[] args) {
-        PassengerInfo p1= new PassengerInfo();
-        String[] pass=p1.getinfo();
+        PassengerInfo i= new PassengerInfo();
+        String[] pass=i.getinfo();
         info s1 = new info(pass[0], Integer.parseInt(pass[1]), pass[2].charAt(0), Integer.parseInt(pass[3]));
 
         try {
@@ -96,12 +102,14 @@ public class PassengerInfo{
             o.close();
 			f.close();
             
-            FileInputStream fi = new FileInputStream(new File("myTrains.ser"));
+            FileInputStream fi = new FileInputStream(new File("myPassenger.ser"));
 			ObjectInputStream oi = new ObjectInputStream(fi);
 
+
 			// Read objects
-            data pr1 = (data) oi.readObject();
-            System.out.println(pr1.toString());
+            info ps1 = (info) oi.readObject();
+            System.out.println(ps1.toString());
+
 			oi.close();
 			fi.close();
 

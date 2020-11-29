@@ -45,7 +45,7 @@ public class SeatReservation {
     public void trainSearch(){
         try {
  
-            FileInputStream fileIn = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\myTrains.ser");
+            FileInputStream fileIn = new FileInputStream("C:\\Users\\hp\\myTrains.ser");
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
             for(int i=0;i<22;i++){
             Object obj = objectIn.readObject();
@@ -74,7 +74,7 @@ public class SeatReservation {
     public void readChart(){
         try {
  
-            FileInputStream fi = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
+            FileInputStream fi = new FileInputStream("C:\\Users\\hp\\seatAllocation.ser");
             ObjectInputStream oi = new ObjectInputStream(fi);
             for(int i=0;i<154;i++){
             Object obj1 = oi.readObject();
@@ -177,13 +177,13 @@ public class SeatReservation {
         return -1;
 
     }
-
+    // enter passenger details here??
     public void passenger(){
         System.out.println("Enter number of passengers");
         numofpassengers=s.nextInt();
     }
 
-    public int[] seatNum = new int[104];
+    public int[] seatNum = new int[104];  //seatNum should be member of passenger class
 
     public void preference(){
         System.out.println("Enter number of window seats");
@@ -201,6 +201,10 @@ public class SeatReservation {
 
     }
 
+    public void passengerFile(){
+    PassengerInfo psngr = new PassengerInfo();
+    psngr.getinfo(trainNumber, d, seatNum, choice);
+    }
 
     public void Pass() {
 
