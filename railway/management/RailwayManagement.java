@@ -26,16 +26,17 @@ public class RailwayManagement {
         obj2.readChart();
         obj2.passenger();
         obj2.preference();
+        obj2.passengerFile();
         obj2.Pass();
         }
-        if(choice == 4) {
+        /*if(choice == 4) {
         Cancellation c = new Cancellation();
         try {
 			c.cancelTicket();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        }
+        }*/
     }
     obj.close();
     }
