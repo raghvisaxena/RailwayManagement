@@ -177,7 +177,7 @@ public class SeatReservation {
         return -1;
 
     }
-    // enter passenger details here??
+    
     public void passenger(){
         System.out.println("Enter number of passengers");
         numofpassengers=s.nextInt();
@@ -202,6 +202,7 @@ public class SeatReservation {
     }
 
     PassengerInfo psngr = new PassengerInfo();
+    psngr.getin
 
     public void Pass() {
 

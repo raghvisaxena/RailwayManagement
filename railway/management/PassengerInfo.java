@@ -16,10 +16,10 @@ import railway.management.*;
 
 class info implements Serializable{
     private static final long serialVersionUID = 1L;
-    String name, day;
-    int age, pnr, trainnum;
-    char gender;
-    int[] seatnum = new int[104];
+    private String name, day;
+    private int age, pnr, trainnum, choice;
+    private char gender;
+    private int[] seatnum = new int[104];
     Random r= new Random();
     transient Scanner sc = new Scanner(System.in);
 
@@ -38,12 +38,15 @@ class info implements Serializable{
     {
         return this.day;
     }
-    
+    public int getchoice()
+    {
+        return choice;
+    }
     public int[] getSeatnum() {
         return seatnum;
     }
 
-    public void getinfo(int t,String d,int[] snum){
+    public void getinfo(int t,String d,int[] snum,int c){
         
         System.out.print("Enter name:   ");
         this.name=sc.nextLine();
@@ -55,6 +58,7 @@ class info implements Serializable{
         this.day=d;
         this.trainnum=t;
         this.seatnum=snum;
+        this.choice=c;
     }
 
     @Override
@@ -65,7 +69,7 @@ class info implements Serializable{
 }
 
 public class PassengerInfo {
-    public static void main(String[] args) {
+    public static void main(String[] args) { //write(info i) funcn should be called from seatReservation
         info s1 = new info();
         int [] a = {1,2,3,6,5};
         s1.getinfo(7, "monday", a);

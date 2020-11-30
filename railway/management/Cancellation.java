@@ -47,11 +47,17 @@ public class Cancellation { // train details of the ticket should be stored
                 do{
                     sn = sc.nextInt();
                     SeatChart chart = (SeatChart) oi2.readObject(); //repeating seat numbers
-                    //read chart acc to day n train no. then delete seat
+                    if(chart.trainNumber == pi.gettn() && chart.date.equals(pi.getday()))
+                    {
+                        switch
+                    }
+                    
                 } while(sn!=0);         //change end condition
             }  
             oi.close(); 
             fi.close();
+            oi2.close(); 
+            fi2.close();
         } catch (ClassNotFoundException e) {
             System.out.println("class not found!!");
             e.printStackTrace();
