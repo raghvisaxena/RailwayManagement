@@ -114,7 +114,7 @@ class seat{
         o.close();
         f.close();
 
-        FileInputStream fi = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
+        FileInputStream fi = new FileInputStream("C:\\Users\\hp\\seatAllocation.ser");
         ObjectInputStream oi = new ObjectInputStream(fi);
 
         // Read objects

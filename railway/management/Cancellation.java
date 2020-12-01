@@ -31,7 +31,7 @@ public class Cancellation { // train details of the ticket should be stored
         FileInputStream fi2 = new FileInputStream(new File(filename));
         ObjectInputStream oi2 = new ObjectInputStream(fi2);
 
-        FileInputStream fi = new FileInputStream(new File("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser"));
+        FileInputStream fi = new FileInputStream(new File("C:\\Users\\hp\\seatAllocation.ser"));
         ObjectInputStream oi = new ObjectInputStream(fi);
 
         FileOutputStream f = new FileOutputStream(new File("Canceltemp.ser"));
@@ -125,7 +125,7 @@ public class Cancellation { // train details of the ticket should be stored
         file1.delete();
         new File("Canceltemp.ser").renameTo(new File("seatAllocation.ser"));
         
-        sc.close(); 
+        //sc.close(); 
 /*
         FileInputStream fii = new FileInputStream(new File("seatAllocation.ser"));
         ObjectInputStream oii = new ObjectInputStream(fii);
