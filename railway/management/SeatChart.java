@@ -113,21 +113,22 @@ class seat{
        
         o.close();
         f.close();
-
+        
         FileInputStream fi = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
         ObjectInputStream oi = new ObjectInputStream(fi);
 
         // Read objects
-        for(int v=0;v<45;++v)
+        
+        for(int v=0;v<5;++v)
         {
         SeatChart pr1 = (SeatChart) oi.readObject();
-        if(v==16)
+        if(v==4)
         pr1.show();
         } 
 
         oi.close();
         fi.close();
-
+        
     } 
     catch (FileNotFoundException e) {
         System.out.println("File not found");

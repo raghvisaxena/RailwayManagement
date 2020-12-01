@@ -34,6 +34,19 @@ class PassengerInfo implements Serializable{
     {
         return this.trainnum;
     }
+
+    public int getAge(){
+        return this.age;
+    }
+
+    public char getgender(){
+        return this.gender;
+    }
+    
+    public String getName(){
+        return this.name;
+    }
+
     public String getday()
     {
         return this.day;

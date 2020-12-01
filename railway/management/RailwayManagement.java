@@ -11,8 +11,9 @@ public class RailwayManagement {
     while(choice !=5){
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
         System.out.println("Press: \n 1- Train Search\n 2- Seat Reservation \n 3- Booking Status \n 4-Ticket Cancellation \n 5- Exit");
-        System.out.println("---------------------------------------------------------------------------------------------------------------------\n\n");
-        choice = obj.nextInt();
+        System.out.println("---------------------------------------------------------------------------------------------------------------------\n");
+        System.out.println("\n");
+         choice = obj.nextInt();
         if(choice==1){
             SeatReservation obj1=new SeatReservation();
             obj1.Destination();
@@ -29,6 +30,10 @@ public class RailwayManagement {
         obj2.preference();
         obj2.passengerFile();
         obj2.Pass();
+        }
+        if(choice == 3) {
+            bookingstatus b = new bookingstatus();
+            b.bookingstatusinfo();
         }
         if(choice == 4) {
         Cancellation c = new Cancellation();

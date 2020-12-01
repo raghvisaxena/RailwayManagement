@@ -91,7 +91,7 @@ public class Cancellation { // train details of the ticket should be stored
                         o.writeObject(chart);
                     } 
                 }
-            //}  
+              
             oi.close(); 
             fi.close();
             o.close();
@@ -104,7 +104,10 @@ public class Cancellation { // train details of the ticket should be stored
             f.close();
 
             if(pi.getSeatnum().isEmpty())
+            {
              System.out.println("All booked seats have been cancelled\n");
+             new File(filename).delete();
+            } 
             else  
              System.out.println("Your booked seats after cancellation are : " + pi.getSeatnum()); 
             }
@@ -125,7 +128,7 @@ public class Cancellation { // train details of the ticket should be stored
         file1.delete();
         new File("Canceltemp.ser").renameTo(new File("seatAllocation.ser"));
         
-        sc.close(); 
+        
 /*
         FileInputStream fii = new FileInputStream(new File("seatAllocation.ser"));
         ObjectInputStream oii = new ObjectInputStream(fii);
