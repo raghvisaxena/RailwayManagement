@@ -41,7 +41,7 @@ public class SeatReservation {
     public boolean trainSearch(){
         try {
             int count=0;
-            FileInputStream fileIn = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\myTrains.ser");
+            FileInputStream fileIn = new FileInputStream("C:\\Users\\hp\\myTrains.ser");
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
             for(int i=0;i<22;i++){
             Object obj = objectIn.readObject();
@@ -85,7 +85,7 @@ public class SeatReservation {
     public void readChart(){
         try {
  
-            FileInputStream fi = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
+            FileInputStream fi = new FileInputStream("C:\\Users\\hp\\seatAllocation.ser");
             ObjectInputStream oi = new ObjectInputStream(fi);
             for(int i=0;i<154;i++){
             SeatChart pr1=(SeatChart) oi.readObject();

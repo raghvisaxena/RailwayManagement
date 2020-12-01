@@ -2,9 +2,7 @@ package railway.management;
 
 import java.io.Serializable;
 import java.util.Scanner;
-
 import javax.lang.model.util.ElementScanner6;
-
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,7 +29,7 @@ public class Cancellation { // train details of the ticket should be stored
         FileInputStream fi2 = new FileInputStream(new File(filename));
         ObjectInputStream oi2 = new ObjectInputStream(fi2);
 
-        FileInputStream fi = new FileInputStream(new File("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser"));
+        FileInputStream fi = new FileInputStream(new File("C:\\Users\\hp\\seatAllocation.ser"));
         ObjectInputStream oi = new ObjectInputStream(fi);
 
         FileOutputStream f = new FileOutputStream(new File("Canceltemp.ser"));
@@ -49,7 +47,7 @@ public class Cancellation { // train details of the ticket should be stored
                 System.out.println(pi.toString());
 
                 for(int i=0; i<154; ++i){    
-                    SeatChart chart = (SeatChart) oi.readObject(); //repeating seat numbers
+                    SeatChart chart = (SeatChart) oi.readObject();
                     if(chart.trainNumber == pi.gettn() && chart.date.equals(pi.getday()))
                     {
                         System.out.println("Enter the seat number(s) to be cancelled:- \n(Enter 0 after entering all seat numbers for cancellation) ");
@@ -59,28 +57,28 @@ public class Cancellation { // train details of the ticket should be stored
                                         sn = sc.nextInt();
                                         chart.gen[sn]=0;
                                         pi.getSeatnum().remove(Integer.valueOf(sn));
-                                      } while(sn!=0);  //change end condition
+                                      } while(sn!=0);
                                       break;
 
                             case 2 : do{
                                         sn = sc.nextInt();
                                         chart.AC3[sn]=0;
                                         pi.getSeatnum().remove(Integer.valueOf(sn));
-                                      } while(sn!=0);  //change end condition
+                                      } while(sn!=0);
                                       break;
                                       
                             case 3 : do{
                                         sn = sc.nextInt();
                                         chart.AC2[sn]=0;
                                         pi.getSeatnum().remove(Integer.valueOf(sn));
-                                      } while(sn!=0);  //change end condition
+                                      } while(sn!=0);  
                                       break; 
                                       
                             case 4 : do{
                                         sn = sc.nextInt();
                                         chart.AC1[sn]=0;
                                         pi.getSeatnum().remove(Integer.valueOf(sn));
-                                      } while(sn!=0);  //change end condition
+                                      } while(sn!=0);  
                                       break;          
                         }
 
@@ -127,27 +125,6 @@ public class Cancellation { // train details of the ticket should be stored
         File file1 = new File("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
         file1.delete();
         new File("Canceltemp.ser").renameTo(new File("seatAllocation.ser"));
-        
-        
-/*
-        FileInputStream fii = new FileInputStream(new File("seatAllocation.ser"));
-        ObjectInputStream oii = new ObjectInputStream(fii);
 
-        try{
-            SeatChart pr1 = (SeatChart) oii.readObject();
-            SeatChart pr2 = (SeatChart) oii.readObject();
-            SeatChart pr3 = (SeatChart) oii.readObject();
-            //pr1.show();
-            //pr2.show();
-            pr3.show();
-            oii.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        } catch (IOException e) {
-            System.out.println("Error initializing stream");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-*/
     }
 }
