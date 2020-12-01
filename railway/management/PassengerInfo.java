@@ -1,6 +1,7 @@
 package railway.management;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -16,10 +17,10 @@ import railway.management.*;
 
 class PassengerInfo implements Serializable{
     private static final long serialVersionUID = 1L;
-    String name, day; int choice;
-    int age, pnr, trainnum;
-    char gender;
-    int[] seatnum = new int[104];
+    private String name, day;
+    private int age, pnr, trainnum, choice;
+    private char gender;
+    private ArrayList<Integer> seatnum = new ArrayList<Integer>();
     Random r= new Random();
     transient Scanner sc = new Scanner(System.in);
 
@@ -43,11 +44,11 @@ class PassengerInfo implements Serializable{
         return this.choice;
     }
     
-    public int[] getSeatnum() {
+    public ArrayList<Integer> getSeatnum() {
         return seatnum;
     }
 
-    public void getinfo(int t,String d,int[] snum, int c){
+    public void getinfo(int t, String d, ArrayList<Integer> snum, int c){
         
         System.out.print("Enter name:   ");
         this.name=sc.nextLine();
@@ -66,14 +67,14 @@ class PassengerInfo implements Serializable{
     @Override
 	public String toString() {
         return ("\nname: "+ name +"   age:"+ age +"   gender:"+ gender +"    PNR:"+ pnr 
-                +"\ntrain number:"+ trainnum +"   day:"+ day +"\nSeat numbers:"+ Arrays.toString(seatnum) +"\n");
+                +"\ntrain number:"+ trainnum +"   day:"+ day +"\nSeat numbers:"+ seatnum +"\n");
     }
     
     public void writeinfo(){
         //File file = new File("myPassenger.ser");
         try {
             String filename = (this.name +".txt");
-			FileOutputStream f = new FileOutputStream(new File(filename),true);
+			FileOutputStream f = new FileOutputStream(new File(filename));
 			ObjectOutputStream o = new ObjectOutputStream(f);
 
             o.writeObject(this);
