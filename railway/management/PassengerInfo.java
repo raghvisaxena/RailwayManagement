@@ -1,6 +1,7 @@
 package railway.management;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -14,18 +15,17 @@ import java.io.ObjectOutputStream;
 import railway.management.*;
 //import railway.management.SeatReservation.passengerinfo;
 
-class info implements Serializable{
+class PassengerInfo implements Serializable{
     private static final long serialVersionUID = 1L;
     private String name, day;
     private int age, pnr, trainnum, choice;
     private char gender;
-    private int[] seatnum = new int[104];
+    private ArrayList<Integer> seatnum = new ArrayList<Integer>();
     Random r= new Random();
     transient Scanner sc = new Scanner(System.in);
 
-    info(){
+    PassengerInfo(){
     }
-
     public int getPnr(){
         return this.pnr;
     }
@@ -38,15 +38,17 @@ class info implements Serializable{
     {
         return this.day;
     }
+
     public int getchoice()
     {
-        return choice;
+        return this.choice;
     }
-    public int[] getSeatnum() {
+    
+    public ArrayList<Integer> getSeatnum() {
         return seatnum;
     }
 
-    public void getinfo(int t,String d,int[] snum,int c){
+    public void getinfo(int t, String d, ArrayList<Integer> snum, int c){
         
         System.out.print("Enter name:   ");
         this.name=sc.nextLine();
@@ -59,45 +61,34 @@ class info implements Serializable{
         this.trainnum=t;
         this.seatnum=snum;
         this.choice=c;
+        writeinfo();
     }
 
     @Override
 	public String toString() {
         return ("\nname: "+ name +"   age:"+ age +"   gender:"+ gender +"    PNR:"+ pnr 
-                +"\ntrain number:"+ trainnum +"   day:"+ day +"\nSeat numbers:"+ Arrays.toString(seatnum) +"\n");
-	}
-}
-
-public class PassengerInfo {
-    public static void main(String[] args) { //write(info i) funcn should be called from seatReservation
-        info s1 = new info();
-        int [] a = {1,2,3,6,5};
-        s1.getinfo(7, "monday", a);
-        info s2 = new info();
-        s2.getinfo(2, "hdwh", a);
+                +"\ntrain number:"+ trainnum +"   day:"+ day +"\nSeat numbers:"+ seatnum +"\n");
+    }
+    
+    public void writeinfo(){
         //File file = new File("myPassenger.ser");
         try {
-			FileOutputStream f = new FileOutputStream(new File("myPassenger.ser"),true);
+            String filename = (this.name +".txt");
+			FileOutputStream f = new FileOutputStream(new File(filename));
 			ObjectOutputStream o = new ObjectOutputStream(f);
 
-            o.writeObject(s1);
-            System.out.println("lalllallal");
-            o.writeObject(s2);
-            System.out.println("rrrrrlalllallal");
+            o.writeObject(this);
 
             o.close();
 			f.close();
             
-            FileInputStream fi = new FileInputStream(new File("myPassenger.ser"));
+            FileInputStream fi = new FileInputStream(new File(filename));
 			ObjectInputStream oi = new ObjectInputStream(fi);
 
 			// Read objects
-            info ps1 = (info) oi.readObject();
+            PassengerInfo ps1 = (PassengerInfo) oi.readObject();
             System.out.println(ps1.toString());
-            info ps2 = (info) oi.readObject();
-            System.out.println("ddddddddd");
-            System.out.println(ps2.toString());
-            
+    
 			oi.close();
 			fi.close();
 

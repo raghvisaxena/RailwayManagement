@@ -16,10 +16,6 @@ import java.io.ObjectOutputStream;
 
 public class SeatReservation {
     Scanner s = new Scanner(System.in);
-    private static int[] general = new int[104];
-    private static int[] Ac3 = new int[104];
-    private static int[] Ac2 = new int[54];
-    private static int[] Ac1 = new int[28];
     int countg = 104;
     int countAC1=28;
     int countAC2=54;
@@ -30,7 +26,7 @@ public class SeatReservation {
     String destination;
     String source;
     String d;
-    
+    ArrayList<Integer> seatNum = new ArrayList<Integer>(numofpassengers);
 
     public void Destination(){
         System.out.println("------------------------------");
@@ -42,28 +38,43 @@ public class SeatReservation {
     }
 
     
-    public void trainSearch(){
+    public boolean trainSearch(){
         try {
- 
+            int count=0;
             FileInputStream fileIn = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\myTrains.ser");
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
             for(int i=0;i<22;i++){
             Object obj = objectIn.readObject();
             data pr1=(data) obj;
             String[] s=pr1.getStations();
-
+            int c=0;
             for(int j=0;j < pr1.getNumStation();j++){
                 for(int k=j+1;k<pr1.getNumStation();k++){
                     if((s[j].equals(source)) && (s[k].equals(destination))){
                         System.out.println(pr1.toString());
-                    }
+                    }    
+                    else{
+                        c++;
+                    }    
                 }
-            }}
+            }
+            if(c==pr1.getNumStation()*(pr1.getNumStation()-1)/2)
+                count++; 
+        }
             objectIn.close();
             fileIn.close();
+
+            if(count==22){
+                System.out.println("No Trains Available\n");
+                return true; 
+            }
+
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        return false;
     }
 
     public void getTrain(){
@@ -77,8 +88,8 @@ public class SeatReservation {
             FileInputStream fi = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
             ObjectInputStream oi = new ObjectInputStream(fi);
             for(int i=0;i<154;i++){
-            Object obj1 = oi.readObject();
-            SeatChart pr1=(SeatChart) obj1;
+            SeatChart pr1=(SeatChart) oi.readObject();
+            
             if(pr1.getDay().equals(d) && pr1.getTrainNumber()==trainNumber){
                 pr1.show(); choice=pr1.getChoice();
             }
@@ -91,28 +102,27 @@ public class SeatReservation {
     }
    
 
-    public int nonwindowseats(int choice){
+    public int nonwindowseats(int choice, SeatChart SEAT_CHART){
         if (choice==1){
-        if(general[103]!=1)
+        if(SEAT_CHART.gen[103]!=1)
         {
             for(int i=0;i<104;i++)
-            {if(i%2==1 && general[i]!=1){
-                general[i]=1;
-                countg--;
+            {if(i%2==1 && SEAT_CHART.gen[i]!=1){
+                SEAT_CHART.gen[i]=1;
+                //countg--;
                 return i;}
             }
             
         }
     }
 
-
         if(choice==2)
         {
-            if(Ac3[103]!=1){
+            if(SEAT_CHART.AC3[103]!=1){
             for(int i=0;i<104;i++)
-            {if(i%2==1  && Ac3[i]!=1){
-                Ac3[i]=1;
-                countAC3--;
+            {if(i%2==1  && SEAT_CHART.AC3[i]!=1){
+                SEAT_CHART.AC3[i]=1;
+                //countAC3--;
                 return i;}}
             }
         }
@@ -120,9 +130,9 @@ public class SeatReservation {
         if(choice==3)
         {
             for(int i=0;i<54;i++)
-            {if(i%2==1  && Ac2[i]!=1){
-                Ac2[i]=1;
-                countAC2--;
+            {if(i%2==1  && SEAT_CHART.AC2[i]!=1){
+                SEAT_CHART.AC2[i]=1;
+                //countAC2--;
                 return i;
             }
             } 
@@ -131,78 +141,114 @@ public class SeatReservation {
         if(choice==4)
         {
             for(int i=0;i<54;i++)
-            {if(i%2==1  && Ac1[i]!=1){
-                Ac1[i]=1;
-                countAC1--;
+            {if(i%2==1  && SEAT_CHART.AC1[i]!=1){
+                SEAT_CHART.AC1[i]=1;
+                //countAC1--;
                 return i;}
             }
         }
+        
 
         return -1;
 
     }
-    public int windowseats(int choice){
+
+    public int windowseats(int choice, SeatChart SEAT_CHART){
         if(choice==1)
         {
             for(int i=1;i<=104;i++)
-            {if(i%2==0 && general[i]!=1){
-                general[i]=1;
-                countg--;
+            {if(i%2==0 && SEAT_CHART.gen[i]!=1){
+                SEAT_CHART.gen[i]=1;
+                //countg--;
                 return i;}}}
 
         else if(choice==2)
         {
             for(int i=1;i<=104;i++)
-            {if(i%2==0  && Ac3[i]!=1){
-                Ac3[i]=1;
-                countAC3--;
+            {if(i%2==0  && SEAT_CHART.AC3[i]!=1){
+                SEAT_CHART.AC3[i]=1;
+                //countAC3--;
                 return i;}}}
 
         else if(choice==3)
         {
             for(int i=1;i<=54;i++)
-            {if(i%2==0  && Ac2[i]!=1){
-                Ac2[i]=1;
-                countAC2--;
+            {if(i%2==0  && SEAT_CHART.AC2[i]!=1){
+                SEAT_CHART.AC2[i]=1;
+                //countAC2--;
                 return i;}}}
 
         else if(choice==4)
         { 
             for(int i=1;i<=54;i++)
-            {if(i%2==0  && Ac1[i]!=1){
-                Ac1[i]=1;
-                countAC1--;
+            {if(i%2==0  && SEAT_CHART.AC1[i]!=1){
+                SEAT_CHART.AC1[i]=1;
+                //countAC1--;
                 return i;}}}
 
         return -1;
 
     }
     
+    
     public void passenger(){
         System.out.println("Enter number of passengers");
         numofpassengers=s.nextInt();
     }
-
-    public int[] seatNum = new int[104];  //seatNum should be member of passenger class
-
-    public void preference(){
+ 
+    public void preference() {
         System.out.println("Enter number of window seats");
         int ws=s.nextInt();
-        
-        int i=0;
-        for(;i<ws;i++){
-            seatNum[i]= this.windowseats(choice);
+
+        try{
+            FileInputStream fin = new FileInputStream(new File("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser"));
+            ObjectInputStream oin = new ObjectInputStream(fin);
+            FileOutputStream fout = new FileOutputStream(new File("temp.ser"));
+            ObjectOutputStream oout = new ObjectOutputStream(fout);
+
+            for(int j=0;j<154;j++){
+                SeatChart sc1 = (SeatChart) oin.readObject();
+            
+                if(sc1.getDay().equals(d) && sc1.getTrainNumber()==trainNumber){
+                    int i=0;
+                    for(;i<ws;i++){
+                        seatNum.add(this.windowseats(choice, sc1));
+                    }
+
+                    for (; i<numofpassengers; i++){
+                        seatNum.add(this.nonwindowseats(choice, sc1));
+                    }
+                    
+                    oout.writeObject(sc1);    
+                }
+                else{
+                    oout.writeObject(sc1);
+                }
+            }
+
+            oin.close();
+            fin.close();
+            oout.close();
+            fout.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println("Error initializing stream");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
-        for (; i<numofpassengers; i++){
-            seatNum[i]=this.nonwindowseats(choice);
-        }
-
+        File file = new File("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
+        file.delete();
+        new File("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\temp.ser").renameTo(new File("seatAllocation.ser"));
 
     }
 
+    public void passengerFile(){
     PassengerInfo psngr = new PassengerInfo();
-    psngr.getin
+    psngr.getinfo(trainNumber, d, seatNum, choice);
+    }
 
     public void Pass() {
 
@@ -216,8 +262,7 @@ public class SeatReservation {
 
         System.out.println("fare:" + numofpassengers*choice*30);
 
-        System.out.println("Your seat numbers are:"); for(int j=0;j<numofpassengers;j++){System.out.println(seatNum[j]);}
-
+        System.out.println("Your seat numbers are:" + seatNum); 
         System.out.println("Please enjoy the ride.");
 
         System.out.println();

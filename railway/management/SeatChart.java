@@ -114,23 +114,16 @@ class seat{
         o.close();
         f.close();
 
-        FileInputStream fi = new FileInputStream(new File("seatAllocation.ser"));
+        FileInputStream fi = new FileInputStream("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
         ObjectInputStream oi = new ObjectInputStream(fi);
 
         // Read objects
+        for(int v=0;v<45;++v)
+        {
         SeatChart pr1 = (SeatChart) oi.readObject();
-        SeatChart pr2 = (SeatChart) oi.readObject();
-        SeatChart pr3 = (SeatChart) oi.readObject();
-        SeatChart pr4 = (SeatChart) oi.readObject();
-        SeatChart pr5 = (SeatChart) oi.readObject();
-        SeatChart pr6 = (SeatChart) oi.readObject();
-        SeatChart pr7 = (SeatChart) oi.readObject();
-        SeatChart pr8 = (SeatChart) oi.readObject();
-        SeatChart pr9 = (SeatChart) oi.readObject();
-
-        pr7.show();
-        pr8.show();
-        pr9.show(); 
+        if(v==16)
+        pr1.show();
+        } 
 
         oi.close();
         fi.close();
