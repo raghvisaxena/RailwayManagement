@@ -39,7 +39,7 @@ public class Cancellation {
             PassengerInfo pi = (PassengerInfo) oi2.readObject();
             oi2.close(); 
             fi2.close();
-            //new File(filename).delete();
+            
           
             if(pi.getPnr() == pnr_num)
             {
