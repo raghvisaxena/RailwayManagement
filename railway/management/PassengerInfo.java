@@ -13,9 +13,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import railway.management.*;
-//import railway.management.SeatReservation.passengerinfo;
 
-class PassengerInfo implements Serializable{
+class PassengerInfo implements Serializable {
     private static final long serialVersionUID = 1L;
     private String name, day;
     private int age, pnr, trainnum, choice;
@@ -84,7 +83,7 @@ class PassengerInfo implements Serializable{
     }
     
     public void writeinfo(){
-        //File file = new File("myPassenger.ser");
+       
         try {
             String filename = (this.name +".txt");
 			FileOutputStream f = new FileOutputStream(new File(filename));

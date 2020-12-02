@@ -15,10 +15,10 @@ public class SeatChart implements Serializable{
     private static final long serialVersionUID = 1L;
     int trainNumber;
     String date;
-    int[] gen = new int[104];
-    int[] AC3 = new int[104];
-    int[] AC2= new int[54];
-    int[] AC1 = new int[28];
+    int[] gen = new int[105];
+    int[] AC3 = new int[105];
+    int[] AC2= new int[55];
+    int[] AC1 = new int[29];
     int choice;
 
     SeatChart(String d, int n){
@@ -50,7 +50,7 @@ public class SeatChart implements Serializable{
 
     public int count(int[] a){
         int c=0;
-        for(int i=0;i<a.length;i++){
+        for(int i=1;i<a.length;i++){
             if(a[i]==0)
             c++;
         }
@@ -119,12 +119,8 @@ class seat{
 
         // Read objects
         
-        for(int v=0;v<5;++v)
-        {
         SeatChart pr1 = (SeatChart) oi.readObject();
-        if(v==4)
         pr1.show();
-        } 
 
         oi.close();
         fi.close();
