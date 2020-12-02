@@ -39,10 +39,11 @@ public class Cancellation {
             PassengerInfo pi = (PassengerInfo) oi2.readObject();
             oi2.close(); 
             fi2.close();
-            new File(filename).delete();
+            //new File(filename).delete();
           
             if(pi.getPnr() == pnr_num)
             {
+                new File(filename).delete();
                 System.out.println(pi.toString());
 
                 for(int i=0; i<154; ++i){    
@@ -100,23 +101,29 @@ public class Cancellation {
             o.close();
             f.close();
 
-            if(pi.getSeatnum().isEmpty())
-            {
-             System.out.println("\nAll booked seats have been cancelled\n");
-             new File(filename).delete();
-            } 
-            else  
-             System.out.println("\nYour booked seats after cancellation are : " + pi.getSeatnum() + "\n"); 
+                if(pi.getSeatnum().isEmpty())
+                {
+                System.out.println("\nAll booked seats have been cancelled\n");
+                new File(filename).delete();
+                } 
+                else  
+                System.out.println("\nYour booked seats after cancellation are : " + pi.getSeatnum() + "\n");
+                
+                File file1 = new File("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
+                file1.delete();
+                new File("Canceltemp.ser").renameTo(new File("seatAllocation.ser"));
+                
             }
             else   
             {
+                o.writeObject(new SeatChart("temp", 1)); 
+                o.close();
+                f.close();
+                new File("Canceltemp.ser").delete();
+                
                 System.out.println("\nWRONG PNR\n");
             }
-
-            File file1 = new File("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
-            file1.delete();
-            new File("Canceltemp.ser").renameTo(new File("seatAllocation.ser"));
-
+            
         } catch (ClassNotFoundException e) {
             System.out.println("class not found");
             e.printStackTrace();
