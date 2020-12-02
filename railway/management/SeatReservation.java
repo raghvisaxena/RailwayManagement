@@ -119,25 +119,21 @@ public class SeatReservation {
    
 
     public int nonwindowseats(int choice, SeatChart SEAT_CHART){
-        if (choice==1){
-        if(SEAT_CHART.gen[103]!=1)
+        if (choice==1)
         {
             for(int i=0;i<104;i++)
             {if(i%2==1 && SEAT_CHART.gen[i]!=1){
                 SEAT_CHART.gen[i]=1;
                 return i;}
-            }
-            
+            } 
         }
-    }
 
         if(choice==2)
         {
-            if(SEAT_CHART.AC3[103]!=1){
             for(int i=0;i<104;i++)
             {if(i%2==1  && SEAT_CHART.AC3[i]!=1){
                 SEAT_CHART.AC3[i]=1;
-                return i;}}
+                return i;}
             }
         }
 
