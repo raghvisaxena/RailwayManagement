@@ -13,9 +13,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import railway.management.*;
 
-public class Cancellation { // train details of the ticket should be stored
+public class Cancellation { 
 
-    void cancelTicket() throws IOException {
+    void cancelTicket() {
         Scanner sc = new Scanner(System.in);
         int sn;
 
@@ -25,18 +25,17 @@ public class Cancellation { // train details of the ticket should be stored
         int pnr_num = sc.nextInt();
         
         String filename = (n +".txt");
-
+        try{
         FileInputStream fi2 = new FileInputStream(new File(filename));
         ObjectInputStream oi2 = new ObjectInputStream(fi2);
 
-        FileInputStream fi = new FileInputStream(new File("C:\\Users\\hp\\seatAllocation.ser"));
+        FileInputStream fi = new FileInputStream(new File("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser"));
         ObjectInputStream oi = new ObjectInputStream(fi);
 
         FileOutputStream f = new FileOutputStream(new File("Canceltemp.ser"));
         ObjectOutputStream o = new ObjectOutputStream(f);
 
       
-        try {
             PassengerInfo pi = (PassengerInfo) oi2.readObject();
             oi2.close(); 
             fi2.close();
@@ -103,28 +102,29 @@ public class Cancellation { // train details of the ticket should be stored
 
             if(pi.getSeatnum().isEmpty())
             {
-             System.out.println("All booked seats have been cancelled\n");
+             System.out.println("\nAll booked seats have been cancelled\n");
              new File(filename).delete();
             } 
             else  
-             System.out.println("Your booked seats after cancellation are : " + pi.getSeatnum()); 
+             System.out.println("\nYour booked seats after cancellation are : " + pi.getSeatnum() + "\n"); 
             }
             else   
             {
                 System.out.println("\nWRONG PNR\n");
             }
+
+            File file1 = new File("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
+            file1.delete();
+            new File("Canceltemp.ser").renameTo(new File("seatAllocation.ser"));
+
         } catch (ClassNotFoundException e) {
-            System.out.println("class not found!!");
+            System.out.println("class not found");
             e.printStackTrace();
         } catch (FileNotFoundException e) {
-			System.out.println("File not found");
+			System.out.println("No booking done under the respective name and PNR");
 		} catch (IOException e) {
 			System.out.println("Error initializing stream");
         } 
-       
-        File file1 = new File("C:\\Users\\Dhara Patel\\Desktop\\RailwayManagement\\seatAllocation.ser");
-        file1.delete();
-        new File("Canceltemp.ser").renameTo(new File("seatAllocation.ser"));
 
     }
 }

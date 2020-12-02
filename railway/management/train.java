@@ -1,7 +1,6 @@
 package railway.management;
 
 import java.io.Serializable;
-import java.util.Scanner;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -70,7 +69,7 @@ public class train {
 		String[] station8={"mumbai","vapi","vadodara","udaipur","ajmer","jaipur","surat","agra","noida","delhi"};
 		data p8 = new data(8,10, station8);
 
-		String[] station9 = {"new delhi", "ghaziabad", "aligarh", "tundla", "etawah", "kanpur", "lucknow"};
+		String[] station9 = {"delhi", "ghaziabad", "aligarh", "tundla", "etawah", "kanpur", "lucknow"};
 		data p9 = new data(9,7,station9);
 
 		String[] station10 = { "ujjain" ,"vidisha", "bina", "damoh", "katni", "satna", "prayagraj", "varanasi", "kashi", "patna" };
@@ -91,7 +90,7 @@ public class train {
 		String[] station15 = { "patna" ,"kashi", "varanasi", "prayagraj", "satna", "katni", "damoh", "bina", "vidisha", "ujjain" };
 				data p15 = new data(15,10,station15);
 
-		String[] station16 = {"lucknow", "kanpur", "etawah", "Tundla", "aligarh", "ghaziabad", "new delhi"};
+		String[] station16 = {"lucknow", "kanpur", "etawah", "Tundla", "aligarh", "ghaziabad", "delhi"};
 				data p16 = new data(16,7,station16);
 
 		String[] station17 = { "mumbai" ,"panvel", "ratnagiri", "kudal", "madgaon", "udupi", "mangalore", "kannur", "alleppey","kollam" };
@@ -100,16 +99,16 @@ public class train {
 		String[] station18 = { "kollam" ,"alleype", "kannur", "mangalore", "udupi", "madgaon", "kudal", "ratnagiri", "panvel","mumbai" };
 				data p18 = new data(18,10,station18);
 
-		String[] station19 = { "new delhi" ,"mathura", "agra","jhansi", "bhopal", "itarsi", "nagpur", "sirpur", "warangal", "nellore", "gudur", "chennai", "puducherry", "tiruchirapalli", "madurai", "kanyakumari" };
+		String[] station19 = { "delhi" ,"mathura", "agra","jhansi", "bhopal", "itarsi", "nagpur", "sirpur", "warangal", "nellore", "gudur", "chennai", "puducherry", "tiruchirapalli", "madurai", "kanyakumari" };
 				data p19 = new data(19,16,station19);
 
-		String[] station20 = { "kanyakumari" , "madurai", "tiruchirapalli", "puducherry", "chennai","gudur", "nellore", "warangal", "sirpur", "nagpur", "itarsi", "bhopal", "jhansi", "agra", "mathura", "new delhi" };
+		String[] station20 = { "kanyakumari" , "madurai", "tiruchirapalli", "puducherry", "chennai","gudur", "nellore", "warangal", "sirpur", "nagpur", "itarsi", "bhopal", "jhansi", "agra", "mathura", "delhi" };
 				data p20 = new data(20,16,station20);
 
 		String[] station21={"kolkata","bardhaman","dhanbad","durgapur","deoghar","patna"};
 		data p21= new data(21, 6, station21);
 		
-		String[] station22={"new delhi","mathura","agra","gwalior","jhansi","bina","bhopal","itarsi","belapur","ahmadnagar", "solapur","anantapur","hindupur","bangalore"};
+		String[] station22={"delhi","mathura","agra","gwalior","jhansi","bina","bhopal","itarsi","belapur","ahmadnagar", "solapur","anantapur","hindupur","bangalore"};
 		data p22= new data(22, 14, station22);
 
 		try {
@@ -147,50 +146,11 @@ public class train {
 			ObjectInputStream oi = new ObjectInputStream(fi);
 
 			// Read objects
-			data pr1 = (data) oi.readObject();
-			data pr2 = (data) oi.readObject();
-			data pr3 = (data) oi.readObject();
-			data pr4 = (data) oi.readObject();
-			data pr5 = (data) oi.readObject();
-			data pr6 = (data) oi.readObject();
-			data pr7 = (data) oi.readObject();
-			data pr8 = (data) oi.readObject();
-			data pr9 = (data) oi.readObject();
-			data pr10 = (data) oi.readObject();
-			data pr11 = (data) oi.readObject();
-			data pr12= (data) oi.readObject();
-			data pr13= (data) oi.readObject();
-			data pr14= (data) oi.readObject();
-			data pr15= (data) oi.readObject();
-			data pr16= (data) oi.readObject();
-			data pr17= (data) oi.readObject();
-			data pr18= (data) oi.readObject();
-			data pr19= (data) oi.readObject();
-			data pr20= (data) oi.readObject();
-			data pr21= (data) oi.readObject();
-			data pr22= (data) oi.readObject();
-			System.out.println(pr1.toString());
-			System.out.println(pr2.toString());
-			System.out.println(pr3.toString());
-			System.out.println(pr4.toString());
-			System.out.println(pr5.toString());
-			System.out.println(pr6.toString());
-			System.out.println(pr7.toString());
-			System.out.println(pr8.toString());
-			System.out.println(pr9.toString());
-			System.out.println(pr10.toString());
-			System.out.println(pr11.toString());
-			System.out.println(pr12.toString());
-			System.out.println(pr13.toString());
-			System.out.println(pr14.toString());
-			System.out.println(pr15.toString());
-			System.out.println(pr16.toString());
-			System.out.println(pr17.toString());
-			System.out.println(pr18.toString());
-			System.out.println(pr19.toString());
-			System.out.println(pr20.toString());
-			System.out.println(pr21.toString());
-			System.out.println(pr22.toString());
+			for(int i=0;i<22;++i)
+			{
+				data pr1 = (data) oi.readObject();
+				System.out.println(pr1.toString());
+			}
 
 			oi.close();
 			fi.close();

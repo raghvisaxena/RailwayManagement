@@ -16,18 +16,28 @@ public class RailwayManagement {
 
         if(choice==1){
             SeatReservation obj1=new SeatReservation();
-            obj1.Destination();
-            obj1.trainSearch();
+            if(obj1.Destination())
+             continue;
+            if(obj1.trainSearch())
+             continue;
         }
         if(choice ==2){
             SeatReservation obj2=new SeatReservation();
-            obj2.Destination();
+            if(obj2.Destination())
+             continue;
             if(obj2.trainSearch())
-            continue;
+             continue;
             obj2.getTrain();
-            obj2.readChart();
+            if(obj2.readChart())
+             continue;
             obj2.passenger();
-            obj2.preference();
+            try {
+                if (obj2.preference())
+                    continue;
+            } catch (IOException e) {
+                System.out.print("Caught ");
+                e.printStackTrace();
+            }
             obj2.passengerFile();
             obj2.Pass();
         }
@@ -37,11 +47,7 @@ public class RailwayManagement {
         }
         if(choice == 4) {
             Cancellation c = new Cancellation();
-            try {
                 c.cancelTicket();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
     obj.close();
