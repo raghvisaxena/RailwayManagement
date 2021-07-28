@@ -191,7 +191,6 @@ public class SeatReservation {
                 return i;}}}
 
         return -1;
-
     }
     
     
@@ -210,8 +209,6 @@ public class SeatReservation {
         FileOutputStream fout = new FileOutputStream(new File("temp.ser"));
         ObjectOutputStream oout = new ObjectOutputStream(fout);
         try{
-            
-           
             for(int j=0;j<154;j++){
                 SeatChart sc1 = (SeatChart) oin.readObject();
             
@@ -245,8 +242,7 @@ public class SeatReservation {
                             sc.nextLine(); 
                             
                             return true;
-                        }
-                         
+                        }   
                     }
                 
                     oout.writeObject(sc1);    
